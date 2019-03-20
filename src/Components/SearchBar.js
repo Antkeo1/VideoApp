@@ -5,16 +5,17 @@ class SearchBar extends React.Component {
     term: ''
   }
 
-  // event handler
+  // onChange event
   termChange = (e) => {
     this.setState({
       term: e.target.value
     })
   }
 
+  // onSubmit event
   formSubmit = e => {
     e.preventDefault()
-    
+
   }
 
   render() {
