@@ -2,6 +2,7 @@ import React from 'react'
 import SearchBar from './SearchBar'
 import youtube from '../api/youtube'
 import VideoList from './VideoList'
+import VideoDetail from './VideoDetail'
 
 class App extends React.Component {
   state = {
@@ -9,6 +10,7 @@ class App extends React.Component {
     selectedVideo: null
   }
 
+  // method to search terms for searchbar
   onTermSubmit = async term => {
     const res = await youtube.get('/search', {
       params: {
@@ -19,18 +21,23 @@ class App extends React.Component {
       videos: res.data.items
     })
   }
-  onVideoSelect = (video) => {
 
+  // method to select one video
+  onVideoSelect = (video) => {
+    this.setState({
+      selectedVideo: video
+    })
   }
 
   render() {
     return (
       <div className='ui container'>
         <SearchBar onFormSubmit={this.onTermSubmit}/>
+        <VideoDetail video={this.state.selectedVideo}/>
         <VideoList onVideoSelect={this.onVideoSelect}
           videos={this.state.videos}
         />
-        
+
       </div>
     )
   }
