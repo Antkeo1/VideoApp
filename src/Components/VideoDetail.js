@@ -5,6 +5,7 @@ const VideoDetail = ({ video }) => {
     return <div>Loading...</div>
   }
 
+  // variable containing link to youtube
   const videoSrc = `https://www.youtube.com/embed/${video.id.videoId}`
 
   return (
