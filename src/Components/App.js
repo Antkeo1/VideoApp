@@ -10,6 +10,10 @@ class App extends React.Component {
     selectedVideo: null
   }
 
+  componentDidMount () {
+    this.onTermSubmit('news')
+  }
+
   // api call to search terms for searchbar
   onTermSubmit = async term => {
     const res = await youtube.get('/search', {
